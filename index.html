@@ -100,24 +100,27 @@
                 return a+b;
             }, 0)
          
-            if (finScore > 2) {
+            if (finScore > 0) {
                 return ('OMG YOU WIN!')
-            } else if (finScore < 2) {
-                return ('YOU LOSE')
+            } else if (finScore < 0) {
+                return ('YOU LOSE!')
             } else {
-                return ('THE GAME IS A TIE')
+                return ('THE GAME IS A TIE!')
             }
          }
          
          
          // Initiates a game and at the end of a game asks if the player wants another one.
-         function playGame() {
-         var getAnswer = window.confirm(game(5) + '. Want to play again?');
+         function playGame(numRounds) {
+       
+         var getAnswer = window.confirm(game(numRounds) + ' Want to play again?');
          if (getAnswer) {
-           playGame();
+           playGame(numRounds);
          };
          }
-         playGame();
+
+
+         playGame(5);
          
       </script>
    </body>
