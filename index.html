@@ -1,7 +1,8 @@
 <html>
    <body>
       <script>
-         var compPlay;
+
+         var compPlay; // create a variable containing the computer's choice by generating a random number between 1-3 and assigning 1-3 to a choice.
          function computerPlay() {
             
             function getRandomInt(max) {
@@ -21,6 +22,8 @@
          };
          
          function rockPapSciss(playerSelection) {
+
+             // compare the player's choice against the computers and assign points - 1 for player win, -1 for computer, 0 for tie
             var newPlay = playerSelection.toUpperCase();
             var compSelect = computerPlay();
             if (newPlay == 'ROCK') {
@@ -53,7 +56,9 @@
          }
          
          function game(numRounds) {
-            var finScore = [];
+            var finScore = []; // array containing the round scores - used to determine final score
+            
+            // function to turn a point score into a string for win, lose, or tie
             function scorer(gameScore) {
                 if (gameScore > 0) {
                     return ('won');
@@ -67,12 +72,14 @@
             var lastRound = 'Input your first choice!';
 
             for (i = 0; i < numRounds; i++ ) {
-            var validInput = ['rock', 'paper','scissors'];
+
+            var validInput = ['rock', 'paper','scissors']; // used to test whether player has entered a valid choice
             var useInput = '';
             
             function getInput() {
             useInput = window.prompt(lastRound);
         
+            // if the player enters an invalid choice, make them choose again
             if (!validInput.includes(useInput.toLowerCase())) {
                 lastRound = 'Oops! That wasn\'t a valid choice. Try typing "rock," "paper," or "scissors"';
                 getInput();
@@ -81,13 +88,14 @@
             }
             getInput();
 
-
+            // calls the play function to get a score for the round
             var game = rockPapSciss(useInput);
             finScore.push(game);
             lastRound= 'You ' + scorer(finScore[i]) + ' that round! You chose ' + useInput + ' and Computer chose ' + compPlay +'. Input your next choice!';
             
             }    
          
+            // Calculate the sum of the round scores 
             var finScore = finScore.reduce(function(a,b) {
                 return a+b;
             }, 0)
@@ -102,7 +110,7 @@
          }
          
          
-         
+         // Initiates a game and at the end of a game asks if the player wants another one.
          function playGame() {
          var getAnswer = window.confirm(game(5) + '. Want to play again?');
          if (getAnswer) {
