@@ -43,7 +43,7 @@ function gameRestart() {
     document.getElementById("wins").textContent = "Wins: " + wins;
     document.getElementById("losses").textContent = "Losses: " + losses;
     document.getElementById("gameUpdate").textContent = "Result: ";
-    document.getElementById("numRounds").readOnly=false;
+    document.getElementById("numRounds").disabled=false;
 }
 
 
@@ -61,7 +61,7 @@ gameButtons.forEach((button) => {
         document.getElementById("wins").textContent = "Wins: " + wins;
         document.getElementById("losses").textContent = "Losses: " + losses;
         let numRounds = document.getElementById("numRounds").value;
-        document.getElementById("numRounds").readOnly=true;
+        document.getElementById("numRounds").disabled=true;
         if (wins >= numRounds || losses >= numRounds) {
             if (wins > losses) {
                 setTimeout(function () {
