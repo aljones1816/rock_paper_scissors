@@ -2,8 +2,9 @@
 let aiChoice; // create a variable containing the computer's choice by generating a random number between 1-3 and assigning 1-3 to a choice.
 let playerChoice; // variable containing player's choice
 const playChoices = ["rock", "paper", "scissors"]; // variable containg possible play choices
-let wins=0;
-let losses=0;
+let wins = 0;
+let losses = 0;
+let winner;
 
 // function to get the index of the cumputer's choice
 function getRandomInt(max) {
@@ -35,6 +36,15 @@ function compareChoices(pChoice, aChoice) {
 
 }
 
+// create a reset function that restarts the game parameters
+function gameRestart() {
+    wins = 0;
+    losses = 0;
+    document.getElementById("wins").textContent = "Wins: " + wins;
+    document.getElementById("losses").textContent = "Losses: " + losses;
+    document.getElementById("gameUpdate").textContent = "Result: ";
+}
+
 
 // create node list for all buttons in DOM
 const gameButtons = document.querySelectorAll('.GameButton');
@@ -49,13 +59,20 @@ gameButtons.forEach((button) => {
         document.getElementById("gameUpdate").textContent = "Result: " + compareChoices(playerChoice, aiChoice) + " You chose " + playChoices[playerChoice] + " and the Computer chose " + playChoices[aiChoice];
         document.getElementById("wins").textContent = "Wins: " + wins;
         document.getElementById("losses").textContent = "Losses: " + losses;
+        if (wins == 5) {
+            window.alert("You win! Final scores - You: 5, Computer: " + losses);
+            gameRestart();
+
+        }
+        if (losses == 5) {
+            window.alert("Computer wins :( Better luck next time. Final scores - You: " + wins + ", Computer: 5");
+            gameRestart();
+        }
+
     });
 });
 
 document.getElementById("reset").addEventListener('click', (e) => {
-    wins=0;
-    losses=0;
-    document.getElementById("wins").textContent = "Wins: " + wins;
-    document.getElementById("losses").textContent = "Losses: " + losses;
-    document.getElementById("gameUpdate").textContent = "Result: ";
+    gameRestart();
 });
+
