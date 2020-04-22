@@ -59,14 +59,16 @@ gameButtons.forEach((button) => {
         document.getElementById("gameUpdate").textContent = "Result: " + compareChoices(playerChoice, aiChoice) + " You chose " + playChoices[playerChoice] + " and the Computer chose " + playChoices[aiChoice];
         document.getElementById("wins").textContent = "Wins: " + wins;
         document.getElementById("losses").textContent = "Losses: " + losses;
-        if (wins == 5) {
-            window.alert("You win! Final scores - You: 5, Computer: " + losses);
+        let numRounds = document.getElementById("numRounds").value;
+        if (wins == numRounds) {
+            setTimeout(function() {window.alert("You win!");
             gameRestart();
-
+        }, 30);
         }
-        if (losses == 5) {
-            window.alert("Computer wins :( Better luck next time. Final scores - You: " + wins + ", Computer: 5");
+        if (losses == numRounds) {
+            setTimeout(function() {window.alert("Computer wins :( Better luck next time.");
             gameRestart();
+        }, 30);
         }
 
     });

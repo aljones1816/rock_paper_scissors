@@ -6,14 +6,17 @@
 
 <body>
     <div id="container">
-        <p>Hi, welcome to rock paper scissors! Click a button to make your selection.</p>
+        <p>Hi, welcome to rock paper scissors! </p>
+        <label for="numRounds">Choose the number of rounds (between 1 and 10)</label>
+        <input type="number" name="numRounds" id="numRounds" min="1" max="10" value="5">
+        <div id="gameBoard">
+            <button class="gameButton" value="0">Rock</button>
+            <button class="gameButton" value="1">Paper</button>
+            <button class="gameButton" value="2">Scissors</button>
+            <p id=gameUpdate>Result:
+            </p>
+        </div>
 
-        <button class="gameButton" value="0">Rock</button>
-        <button class="gameButton" value="1">Paper</button>
-        <button class="gameButton" value="2">Scissors</button>
-
-        <p id=gameUpdate>Result:
-        </p>
         <div id="scoreBoard">
             <ul id="winLossList">
                 <li id="wins">Wins: 0</li>
