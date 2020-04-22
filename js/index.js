@@ -43,6 +43,7 @@ function gameRestart() {
     document.getElementById("wins").textContent = "Wins: " + wins;
     document.getElementById("losses").textContent = "Losses: " + losses;
     document.getElementById("gameUpdate").textContent = "Result: ";
+    document.getElementById("numRounds").readOnly=false;
 }
 
 
