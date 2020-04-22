@@ -60,16 +60,21 @@ gameButtons.forEach((button) => {
         document.getElementById("wins").textContent = "Wins: " + wins;
         document.getElementById("losses").textContent = "Losses: " + losses;
         let numRounds = document.getElementById("numRounds").value;
-        if (wins == numRounds) {
-            setTimeout(function() {window.alert("You win!");
-            gameRestart();
-        }, 30);
+        document.getElementById("numRounds").readOnly=true;
+        if (wins >= numRounds || losses >= numRounds) {
+            if (wins > losses) {
+                setTimeout(function () {
+                    window.alert("You win!");
+                    gameRestart();
+                }, 30);
+            } else {
+                setTimeout(function () {
+                    window.alert("Computer wins :( Better luck next time.");
+                    gameRestart();
+                }, 30);
+            }
         }
-        if (losses == numRounds) {
-            setTimeout(function() {window.alert("Computer wins :( Better luck next time.");
-            gameRestart();
-        }, 30);
-        }
+
 
     });
 });
